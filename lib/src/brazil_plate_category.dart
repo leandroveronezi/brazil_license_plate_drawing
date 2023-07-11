@@ -1,6 +1,7 @@
 /// Represents a category of a plate type. Each category must have its own
 /// color theme representation.
 ///
+
 import 'package:brazil_license_plate_drawing/src/plate_color_set.dart';
 import 'package:flutter/material.dart';
 
@@ -11,18 +12,32 @@ enum BrazilMercosulPlateCategory {
   oficial,
   diplomatico,
   colecionador,
+  colecionadorNacional,
 }
 
 extension BrazilMercosulPlateCategoryEx on BrazilMercosulPlateCategory {
+  /// Return the equivalent [BrazilThreeLettersPlateCategory] of this [BrazilMercosulPlateCategory]
+  BrazilThreeLettersPlateCategory get convertToThreeLetters {
+    switch (this) {
+      case BrazilMercosulPlateCategory.comercial:
+        return BrazilThreeLettersPlateCategory.comercial;
+      case BrazilMercosulPlateCategory.especial:
+        return BrazilThreeLettersPlateCategory.especial;
+      case BrazilMercosulPlateCategory.oficial:
+        return BrazilThreeLettersPlateCategory.oficial;
+      case BrazilMercosulPlateCategory.diplomatico:
+        return BrazilThreeLettersPlateCategory.diplomatico;
+      case BrazilMercosulPlateCategory.colecionador:
+      case BrazilMercosulPlateCategory.colecionadorNacional:
+        return BrazilThreeLettersPlateCategory.colecionador;
+      case BrazilMercosulPlateCategory.particular:
+      default:
+        return BrazilThreeLettersPlateCategory.particular;
+    }
+  }
+
   PlateColorSet get plateColor {
     switch (this) {
-      case BrazilMercosulPlateCategory.particular:
-        return PlateColorSet(
-          backgroundColor: Colors.white,
-          borderColor: Colors.black,
-          lettersCollor: Colors.black,
-        );
-
       case BrazilMercosulPlateCategory.comercial:
         return PlateColorSet(
           backgroundColor: Colors.white,
@@ -58,6 +73,14 @@ extension BrazilMercosulPlateCategoryEx on BrazilMercosulPlateCategory {
           lettersCollor: Colors.grey,
         );
 
+      case BrazilMercosulPlateCategory.colecionadorNacional:
+        return PlateColorSet(
+          backgroundColor: Colors.black,
+          borderColor: Colors.white,
+          lettersCollor: Colors.white,
+        );
+
+      case BrazilMercosulPlateCategory.particular:
       default:
         return PlateColorSet(
           backgroundColor: Colors.white,
@@ -88,14 +111,30 @@ extension BrazilThreeLettersPlateCategoryEx on BrazilThreeLettersPlateCategory {
     return 1.0;
   }
 
-  PlateColorSet get plateColor {
+  /// Return the equivalent [BrazilMercosulPlateCategory] of this [BrazilThreeLettersPlateCategory]
+  BrazilMercosulPlateCategory get convertToMercosul {
     switch (this) {
+      case BrazilThreeLettersPlateCategory.aprendizagem:
+      case BrazilThreeLettersPlateCategory.comercial:
+        return BrazilMercosulPlateCategory.comercial;
+      case BrazilThreeLettersPlateCategory.especial:
+        return BrazilMercosulPlateCategory.especial;
+      case BrazilThreeLettersPlateCategory.oficial:
+        return BrazilMercosulPlateCategory.oficial;
+      case BrazilThreeLettersPlateCategory.diplomatico:
+        return BrazilMercosulPlateCategory.diplomatico;
+      case BrazilThreeLettersPlateCategory.colecionador:
+        return BrazilMercosulPlateCategory.colecionador;
+      case BrazilThreeLettersPlateCategory.representacao:
+        return BrazilMercosulPlateCategory.diplomatico;
       case BrazilThreeLettersPlateCategory.particular:
-        return PlateColorSet(
-          backgroundColor: Colors.grey[400]!,
-          borderColor: Colors.grey,
-          lettersCollor: Colors.black,
-        );
+      default:
+        return BrazilMercosulPlateCategory.particular;
+    }
+  }
+
+  PlateColorSet get plateColor {
+    switch (this) {    
 
       case BrazilThreeLettersPlateCategory.comercial:
         return PlateColorSet(
@@ -145,7 +184,8 @@ extension BrazilThreeLettersPlateCategoryEx on BrazilThreeLettersPlateCategory {
           borderColor: Color(0xFF242424),
           lettersCollor: Color(0xffdaa520),
         );
-
+        
+      case BrazilThreeLettersPlateCategory.particular:
       default:
         return PlateColorSet(
           backgroundColor: Colors.grey[400]!,

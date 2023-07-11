@@ -6,3 +6,4 @@ export 'src/brazil_plate_category.dart' show BrazilTwoLettersPlateCategory;
 export 'src/two_letters_plate.dart' show TwoLettersPlate;
 export 'src/three_letters_plate.dart' show ThreeLettersPlate;
 export 'src/mercosul_plate.dart' show MercosulPlate;
+export 'src/utils.dart' show PlateUtils;

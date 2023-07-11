@@ -2,35 +2,37 @@ import 'package:brazil_license_plate_drawing/brazil_license_plate_drawing.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(HomeApp());
+  runApp(const HomeApp());
 }
 
 class HomeApp extends StatelessWidget {
+  const HomeApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Home(),
     );
   }
 }
 
 class Home extends StatelessWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       bottom: true,
       top: true,
       left: true,
       right: true,
       child: Scaffold(
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               SizedBox(
                 height: 30,
               ),

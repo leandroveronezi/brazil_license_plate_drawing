@@ -275,4 +275,7 @@ class MercosulPlate extends StatelessWidget {
       textAlign: TextAlign.center,
     );
   }
+
+  /// Validate if [String] is a valid [MercosulPlate]
+  static isValidPlate(String plate) => RegExp(r'^[A-Z]{3}[0-9][A-Z][0-9]{2}$').hasMatch(plate);
 }
