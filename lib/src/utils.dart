@@ -32,7 +32,7 @@ mixin PlateUtils {
    /// The Mercosul license plate must be in the "AAA1A11" format.
    ///
    /// Returns the new plate in the old pattern.
-  String convertToOldPlate(String? newPlate) {
+  static String convertToOldPlate(String? newPlate) {
     if (newPlate == null) {
       throw ArgumentError.notNull('newPlate');
     }
@@ -51,7 +51,7 @@ mixin PlateUtils {
 
   /// Create a [ThreeLettersPlate] or [MercosulPlate] from [String]. The plate type is auto-selected by format of [String].
   ///  The [category] is auto-converted from [BrazilMercosulPlateCategory] to [BrazilThreeLettersPlateCategory] if needed.
-  Widget? createPlate(String plate, {String? locality, BrazilMercosulPlateCategory category = BrazilMercosulPlateCategory.particular, double? width, double? height}) {
+ static Widget? createPlate(String plate, {String? locality, BrazilMercosulPlateCategory category = BrazilMercosulPlateCategory.particular, double? width, double? height}) {
     locality = locality?.trim() ?? "";
     if (ThreeLettersPlate.isValidPlate(plate)) {
       return ThreeLettersPlate(

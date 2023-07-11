@@ -266,5 +266,5 @@ class ThreeLettersPlate extends StatelessWidget {
   }
 
 /// Validate if [String] is a valid [ThreeLettersPlate]
-  static bool isValidPlate(String plate) => RegExp(r'^[A-Z]{3}\-\d{4}$').hasMatch(plate);
+  static bool isValidPlate(String plate) => RegExp(r'^[A-Z]{3}[-]?\d{4}$').hasMatch(plate);
 }
