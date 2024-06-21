@@ -1,7 +1,7 @@
 name: brazil_license_plate_drawing
 description: Draws on the screen three different types of brazilian cars' license plates. 
 version: 0.0.4
-homepage: https://github.com/carnevalli/brazil_license_plate_drawing
+homepage: https://github.com/zonaro/brazil_license_plate_drawing
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

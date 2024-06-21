@@ -264,4 +264,7 @@ class ThreeLettersPlate extends StatelessWidget {
       textAlign: TextAlign.center,
     );
   }
+
+/// Validate if [String] is a valid [ThreeLettersPlate]
+  static bool isValidPlate(String plate) => RegExp(r'^[A-Z]{3}[-]?\d{4}$').hasMatch(plate);
 }
